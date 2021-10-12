@@ -3,15 +3,12 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Form } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { createDataRequest, fetchAllDataRequest } from "../../Redux/actions";
 import styles from "./styles.module.css";
 
 const NoteForm = () => {
-  // const data = useSelector((state) => state);
-  // console.log(data);
   const dispatch = useDispatch();
-
 
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [open, setOpen] = useState(false);
@@ -40,22 +37,22 @@ const NoteForm = () => {
   const handleSubmit = () => {
     // console.log(formData);
     dispatch(createDataRequest(formData));
-  };
-  
-  useEffect(() => {
     dispatch(fetchAllDataRequest());
-  }, [formData]);
+  };
 
   return (
     <>
-      <DatePicker
-        selected={selectedDate}
-        onChange={handleDateChange}
-        dateFormat="dd/MM/yyyy"
-        minDate={new Date()}
-      />
+      <div className={styles.datePicker}>
+        <h4>Add Note</h4>
+        <DatePicker
+          selected={selectedDate}
+          onChange={handleDateChange}
+          dateFormat="dd/MM/yyyy"
+          minDate={new Date()}
+        />
+      </div>
       {open ? (
-        <div style={{ width: "300px" }}>
+        <div className={styles.form_container}>
           <Form>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Title</Form.Label>
@@ -65,6 +62,7 @@ const NoteForm = () => {
                 onChange={handleChange}
                 type="text"
                 placeholder="Enter Title"
+                maxLength="15"
               />
             </Form.Group>
             <Form.Group
@@ -78,6 +76,7 @@ const NoteForm = () => {
                 onChange={handleChange}
                 as="textarea"
                 rows={3}
+                maxLength="200"
               />
             </Form.Group>
           </Form>

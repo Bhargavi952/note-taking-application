@@ -1,4 +1,9 @@
-import { CREATE, FETCH_ALL_REQUEST , FETCH_ALL_SUCCESS , FETCH_ALL_FAILURE } from "./actionType";
+import {
+  CREATE,
+  FETCH_ALL_REQUEST,
+  FETCH_ALL_SUCCESS,
+  FETCH_ALL_FAILURE,
+} from "./actionType";
 import axios from "axios";
 
 const createData = (payload) => {
@@ -8,29 +13,27 @@ const createData = (payload) => {
   };
 };
 const fetchDataRequest = () => {
-    return {
-      type: FETCH_ALL_REQUEST,
-    };
+  return {
+    type: FETCH_ALL_REQUEST,
   };
-  const fetchDataSuccess = (payload) => {
-    return {
-      type: FETCH_ALL_SUCCESS,
-      payload: payload,
-    };
+};
+const fetchDataSuccess = (payload) => {
+  return {
+    type: FETCH_ALL_SUCCESS,
+    payload: payload,
   };
-  
-  const fetchDataFailure = () => {
-    return {
-      type: FETCH_ALL_FAILURE,
-    };
-  };
+};
 
-
+const fetchDataFailure = () => {
+  return {
+    type: FETCH_ALL_FAILURE,
+  };
+};
 
 export const createDataRequest = (data) => async (dispatch) => {
   try {
     let response = await axios.post(
-      "https://json-server-mocker-data.herokuapp.com/notedata",
+      "https://json-server-mocker-data.herokuapp.com/noteDetails",
       data
     );
     dispatch(createData(response.data));
@@ -40,15 +43,14 @@ export const createDataRequest = (data) => async (dispatch) => {
   }
 };
 
- export const fetchAllDataRequest = () => async (dispatch) => {
-     dispatch(fetchDataRequest())
+export const fetchAllDataRequest = () => async (dispatch) => {
+  dispatch(fetchDataRequest());
   try {
     let response = await axios.get(
-      "https://json-server-mocker-data.herokuapp.com/notedata"
+      "https://json-server-mocker-data.herokuapp.com/noteDetails"
     );
-    dispatch(fetchDataSuccess(response))
-    // console.log(response.data)
+    dispatch(fetchDataSuccess(response));
   } catch (error) {
-    dispatch(fetchDataFailure())
+    dispatch(fetchDataFailure());
   }
 };

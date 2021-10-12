@@ -6,6 +6,7 @@ import {
 } from "./actionType";
 
 const initState = {
+  Notedata: [],
   isLoading: false,
 };
 
@@ -27,7 +28,7 @@ export const noteDataReducer = (state = initState, { type, payload }) => {
     case FETCH_ALL_SUCCESS: {
       return {
         ...state,
-        notedata: payload,
+        Notedata: payload,
         isLoading: false,
       };
     }

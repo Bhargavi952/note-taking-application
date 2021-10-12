@@ -1,19 +1,21 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import NoteForm from "../../Components/NoteForm/NoteForm";
 import NavBar from "../../Components/NavBar/Navbar";
 import NoteList from "../../Components/NoteList/NoteList";
 import styles from "./styles.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAllDataRequest } from "../../Redux/actions";
-// import {setData , getData} from '../../Utils/LocalStorage'
+import { setData, getData } from "../../Utils/LocalStorage";
+import Footer from "../../Components/Footer/Footer";
+import PropagateLoader from "react-spinners/PropagateLoader";
 
 const Home = () => {
+  let [color, setColor] = useState("#212529");
+
   const data = useSelector((state) => state);
-  console.log(data);
-  console.log(data.isLoading)
-  // setData("data" , data.notedata.data)
-  // console.log(getData('data'))
-  // let isLoading = data.isLoading
+
+  let isLoading = data.isLoading;
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -27,11 +29,27 @@ const Home = () => {
           <NoteForm />
         </div>
         <div className={styles.left_container}>
-          {data.notedata.data?.map((item) => {
-            return <NoteList data={item} />;
-          })}
+          {isLoading ? (
+            <div className={styles.loader}>
+              <PropagateLoader color={color} loading={isLoading} size={15} />
+            </div>
+          ) : (
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                flexWrap: "wrap",
+              }}
+            >
+              {data.Notedata.data?.map((item) => {
+                return <NoteList data={item} />;
+              })}
+            </div>
+          )}
         </div>
       </section>
+      <Footer />
     </>
   );
 };

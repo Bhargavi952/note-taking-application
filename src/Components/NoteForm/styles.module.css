@@ -1,5 +1,35 @@
-.btn{
- 
+.btn {
+    border: none;
+    background-color: rgb(29, 29, 29);
+    border-radius: 5px;
+    width: 100%;
+}
+
+.form_container {
+    width: 80%;
     box-shadow: rgba(12, 12, 12, 0.35) 0px 5px 15px;
-    background-color: gray;
+    border-radius: 15px;
+    padding: 30px;
+    margin: 10px;
+    background-color: #fff;
+}
+
+.datePicker {
+    margin: 20px;
+}
+
+.btn:hover {
+    background-color: rgb(92, 92, 92);
+    color: black;
+    font-weight: 800;
+}
+
+@media screen and (max-width:620px) {
+    .form_container {
+        width: 20rem;
+        margin: 2px;
+    }
+    h4 {
+        font-size: 16px;
+    }
 }

@@ -1,12 +1,29 @@
-.home_container{
+.home_container {
     display: flex;
+    background-image: linear-gradient(270deg, #5e5355 0, #725c5c 72%);
 }
-.right_container{
-    width: 40%;
-    /* border: 1px solid red; */
-   padding: 25px 20px;
+
+.right_container {
+    width: 50%;
+    padding: 25px 20px;
 }
-.left_container{
-    width: 60%;
-    /* border: 1px solid red; */
+
+.left_container {
+    width: 50%;
+}
+
+.loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+}
+
+@media screen and (max-width:620px) {
+    .home_container {
+        flex-direction: column;
+    }
+    .left_container {
+        width: 100%;
+    }
 }
