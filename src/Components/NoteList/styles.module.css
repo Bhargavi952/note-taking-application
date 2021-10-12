@@ -1,9 +1,15 @@
 .card {
-    width: 40rem;
+    width: 33rem;
     min-height: 8rem;
     border-radius: 1rem;
     box-shadow: rgba(12, 12, 12, 0.35) 0px 5px 15px;
     margin: 6px 0;
+   
+}
+
+.card_body {
+    
+    width: 85%;
 }
 
 @media screen and (max-width:620px) {

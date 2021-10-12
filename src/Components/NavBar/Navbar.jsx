@@ -1,6 +1,8 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
+import styles from "./styles.module.css";
+
 
 const NavBar = () => {
   return (
@@ -24,10 +26,10 @@ const NavBar = () => {
             </Nav>
             <Nav>
               <Nav.Link href="#login">
-                <Button>Login</Button>
+                <Button className={styles.btn} >Login</Button>
               </Nav.Link>
               <Nav.Link eventKey={2} href="#signup">
-                <Button>SignUp</Button>
+                <Button className={styles.btn}>SignUp</Button>
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>
