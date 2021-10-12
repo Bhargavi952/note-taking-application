@@ -1,12 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Form } from "react-bootstrap";
-
+import { useDispatch, useSelector } from "react-redux";
+import { createDataRequest, fetchAllDataRequest } from "../../Redux/actions";
+import styles from "./styles.module.css";
 
 const NoteForm = () => {
-  
+  // const data = useSelector((state) => state);
+  // console.log(data);
+  const dispatch = useDispatch();
+
+
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [open, setOpen] = useState(false);
   const [formData, setFormData] = useState({
@@ -15,7 +21,6 @@ const NoteForm = () => {
     date: selectedDate,
     createdAt: new Date(),
   });
-
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
@@ -30,12 +35,16 @@ const NoteForm = () => {
     });
   };
   const { title, message } = formData;
-//   console.log(formData);
+  // console.log(selectedDate);
 
   const handleSubmit = () => {
-    console.log(formData);
-
+    // console.log(formData);
+    dispatch(createDataRequest(formData));
   };
+  
+  useEffect(() => {
+    dispatch(fetchAllDataRequest());
+  }, [formData]);
 
   return (
     <>
@@ -72,7 +81,9 @@ const NoteForm = () => {
               />
             </Form.Group>
           </Form>
-          <Button  onClick={handleSubmit}>Sumbit</Button>
+          <Button className={styles.btn} onClick={handleSubmit}>
+            Sumbit
+          </Button>
         </div>
       ) : null}
     </>

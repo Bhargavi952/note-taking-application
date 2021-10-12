@@ -1,0 +1,12 @@
+.home_container{
+    display: flex;
+}
+.right_container{
+    width: 40%;
+    /* border: 1px solid red; */
+   padding: 25px 20px;
+}
+.left_container{
+    width: 60%;
+    /* border: 1px solid red; */
+}
