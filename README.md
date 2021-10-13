@@ -36,6 +36,7 @@ Start the server
 
 ### Desktop view
 
+![2021-10-13-09-36-10](https://user-images.githubusercontent.com/77036158/137065495-2953b6d8-40a1-4e1e-b7d6-13b860ec941d.png)
 
 ### Mobile view
 
